@@ -1,0 +1,19 @@
+name: codility-haskell
+version: 0.0.1
+
+dependencies:
+ - base
+
+library:
+  exposed-modules: BinaryGap, OddOccurencesInArray
+  source-dirs: src
+  dependencies:
+
+tests:
+  test:
+    main: Tests.hs
+    source-dirs: test
+    dependencies:
+      - codility-haskell
+      - hspec
+      - QuickCheck
