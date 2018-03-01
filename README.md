@@ -10,3 +10,9 @@ To run the test suite, execute the following command:
 stack test
 ```
 
+(One may also need to initialize stack environment:
+```bash
+stack init
+```
+
+)

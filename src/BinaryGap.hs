@@ -23,22 +23,24 @@
 
 module BinaryGap where
 
-binaryGap :: Int -> Int
+import Data.Bits
+
+binaryGap :: Bits a => a -> Int
 
 binaryGap n =
   let
-    f :: Int -> Int -> Int -> Int
-    f 0 longestGapSoFar _          = longestGapSoFar
-    f m longestGapSoFar currentGap =
-        let 
-          (m', bit) = divMod m 2
-          gap       = max longestGapSoFar currentGap
-        in
-          if ( bit == 1 ) then
-            gap `seq` f m' gap 0
-          else
-            f m' longestGapSoFar $! (currentGap + 1)
+    loop :: Bits a => a -> Int -> Int -> Int
+    loop  m longestGapSoFar currentGap
+        | m == zeroBits                = longestGapSoFar
+        | otherwise                    =
+         let
+           m'   = m `shiftR` 1
+           gap  = max longestGapSoFar currentGap
+         in
+         if m `testBit` 0 then
+           gap `seq` loop m' gap 0
+         else
+           loop m' longestGapSoFar $! (currentGap + 1)
   in
-    f n 0 0
+    loop n 0 0
 
-  
