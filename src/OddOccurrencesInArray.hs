@@ -46,3 +46,8 @@ oddOccurrencesInArray :: Bits a => [a] -> a
 
 oddOccurrencesInArray = foldl1' xor
 
+oddOccurrencesInArrayInt :: [Int] -> Int
+oddOccurrencesInArrayInt = oddOccurrencesInArray
+
+oddOccurrencesInArrayInteger :: [Integer] -> Integer
+oddOccurrencesInArrayInteger = oddOccurrencesInArray

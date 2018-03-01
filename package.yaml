@@ -5,7 +5,7 @@ dependencies:
  - base
 
 library:
-  exposed-modules: BinaryGap, OddOccurencesInArray
+#  exposed-modules: OddOccurencesInArray, BinaryGap
   source-dirs: src
   dependencies:
 

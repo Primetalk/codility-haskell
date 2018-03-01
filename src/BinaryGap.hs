@@ -44,3 +44,8 @@ binaryGap n =
   in
     loop n 0 0
 
+binaryGapInt :: Int -> Int
+binaryGapInt = binaryGap
+
+binaryGapInteger :: Integer -> Int
+binaryGapInteger = binaryGap
