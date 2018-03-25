@@ -32,3 +32,14 @@ main = hspec $ do
 
     it "4" $ do
       oddOccurrencesInArray [3::Integer, 1, 3, 2, 4, 1, 2] `shouldBe` 4
+
+    it "7" $ do
+      oddOccurrencesInArray [9::Integer, 3, 9, 3, 9, 7, 9] `shouldBe` 7
+
+    it "-1" $ do
+      (
+        let
+          bigList = [1,1000,2000000000] 
+        in
+          oddOccurrencesInArrayInteger (bigList ++ bigList ++ [-1])
+        ) `shouldBe` (-1)

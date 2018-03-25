@@ -34,13 +34,16 @@ binaryGap n =
         | m == zeroBits                = longestGapSoFar
         | otherwise                    =
          let
-           m'   = m `shiftR` 1
-           gap  = max longestGapSoFar currentGap
+           m'                = shiftR m 1
+           longestGapSoFar'  = max longestGapSoFar currentGap
+           currentGap'       = if testBit m 0 then
+                                 0
+                               else
+                                 currentGap + 1
          in
-         if m `testBit` 0 then
-           gap `seq` loop m' gap 0
-         else
-           loop m' longestGapSoFar $! (currentGap + 1)
+           longestGapSoFar' `seq`
+           currentGap' `seq` 
+           loop m' longestGapSoFar' currentGap'
   in
     loop n 0 0
 
